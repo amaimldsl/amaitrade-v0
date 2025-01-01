@@ -17,7 +17,7 @@ def main():
     top_etfs = ['SPY', 'QQQ', 'DIA', 'IWM', 'VTI', 'VEA', 'VWO', 'VTV', 'VUG', 'VOO']
     top_comodities_etfs = ['GLD', 'SLV', 'USO','UNG','PPLT','PALL','WEAT','CORN','DBA', 'DBB', 'DBC', 'DBO', 'DBP']
     #assets = islamic_us_etfs
-    assets = islamic_us_etfs  
+    assets = islamic_us_etfs  + top_tech + top_etfs + top_comodities_etfs 
     start_date = "2016-01-01"
     end_date = datetime.today().strftime('%Y-%m-%d')
 
@@ -58,6 +58,8 @@ def main():
     
     
     risk_free_rate = float(get_t_bill_yield().iloc[-1]["Close"])/100
+
+    #risk_free_rate = .07/100
 
     assets_adjusted_close = assets_adjusted_close.dropna()
     assets_adjusted_close_log = np.log(assets_adjusted_close).diff()
